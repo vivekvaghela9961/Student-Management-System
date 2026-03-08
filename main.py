@@ -1,9 +1,9 @@
-from pandas import read_pickle
-
+from operations import add_student, view_all_students, search_students, delete_student
+from file_handler import load_student
 
 def show_menu():
     print("\n" + "-"*40)
-    print("Welcome to Student Management System💻")
+    print(" Student Management System💻")
     print("-"*40)
     print("1. Add New Student")
     print("2. View All Students")
@@ -14,23 +14,31 @@ def show_menu():
     print("7. Exit")
 
 def main():
+
+    print("\n Welcome to Student Management System")
+
+    students = load_student()
+
+    print(f"📂 Loaded {len(students)} student(s) from storage.")
+
     is_running = True
     while is_running:
         try:
+
             show_menu()
 
             choice = int(input("Enter Your Choice(1-7):"))
 
             if choice == 1:
-                pass
+                add_student(students)
             elif choice == 2:
-                pass
+                view_all_students(students)
             elif choice == 3:
-                pass
+                search_students(students)
             elif choice == 4:
                 pass
             elif choice == 5:
-                pass
+                delete_student(students)
             elif choice == 6:
                 pass
             elif choice == 7:
