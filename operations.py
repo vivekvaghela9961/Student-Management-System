@@ -132,12 +132,71 @@ def delete_student(students):
             print("⚠️ Invalid choice.")
 
 
+def update_student(students):
+    print("\n🔃 UPDATE STUDENT")
+    print("-"*40)
+
+    try:
+        student_id = int(input("Enter student ID: "))
+    except ValueError:
+        print("ID must be a number.")
+        return
+
+    student = None
+    for s in students:
+        if s.student_id == student_id:
+            student = s
+            break
+    if not student:
+        print(f"❌ No student found with ID {student_id}.")
+        return
+
+    print("\nCurrent Details:")
+    student.display()
+
+    print("\nWhat do you want to update?")
+    print("1. Update Name")
+    print("2. Update Age")
+    print("3. Update Grade")
+    print("4. Update Subjects")
+    print("5. Cancel Update")
+
+    choice = input("Enter choice: ").strip()
+    if choice == "1":
+        new_name = input("Enter new student name: ").strip()
+        student.name = new_name
+
+    elif choice == "2":
+        try:
+            new_age = int(input("Enter new student age: ").strip())
+            if 5 <= new_age <= 100:
+                student.age = new_age
+            else:
+                print("⚠️ Invalid Age.")
+                return
+        except ValueError:
+            print("Age must be a number.")
+            return
+
+    elif choice == "3":
+        new_grade = input("Enter new student grade(eg. A, B, 85%): ").strip().upper()
+        student.grade = new_grade
+
+    elif choice == "4":
+        subjects_input = input("Enter new subjects (Comma Separated): ").strip()
+        student.subjects = [subject for subject in subjects_input.split(",") if len(subjects_input) > 0]
+
+    elif choice == "5":
+        print("❌ Update Cancelled.")
+        return
+    else:
+        print("⚠️ Invalid choice.")
+        return
+
+    save_student(students)
+    print("✅ Student updated Successfully.")
 
 
-
-
-def update_student():
-    pass
 
 def show_statistics():
     pass

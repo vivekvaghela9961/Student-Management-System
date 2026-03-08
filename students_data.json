@@ -1,1 +1,15 @@
-[]
+[
+    {
+        "student_id": 1,
+        "name": "Madvixy",
+        "age": 20,
+        "grade": "A",
+        "subjects": [
+            "python",
+            " Java",
+            " Javascript",
+            " Machine Learning"
+        ],
+        "enrolled_on": "March 09, 2026 12:57 AM"
+    }
+]

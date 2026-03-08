@@ -1,4 +1,8 @@
-from operations import add_student, view_all_students, search_students, delete_student
+from operations import (add_student,
+                        view_all_students,
+                        search_students,
+                        delete_student,
+                        update_student)
 from file_handler import load_student
 
 def show_menu():
@@ -36,7 +40,7 @@ def main():
             elif choice == 3:
                 search_students(students)
             elif choice == 4:
-                pass
+                update_student(students)
             elif choice == 5:
                 delete_student(students)
             elif choice == 6:
