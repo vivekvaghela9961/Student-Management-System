@@ -2,7 +2,8 @@ from operations import (add_student,
                         view_all_students,
                         search_students,
                         delete_student,
-                        update_student)
+                        update_student,
+                        show_statistics)
 from file_handler import load_student
 
 def show_menu():
@@ -44,7 +45,7 @@ def main():
             elif choice == 5:
                 delete_student(students)
             elif choice == 6:
-                pass
+                show_statistics(students)
             elif choice == 7:
                 print("Thank you for using this program")
                 is_running = False

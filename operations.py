@@ -29,7 +29,7 @@ def add_student(students):
 
     subjects_input = input("Enter subjects (comma separated, eg. Maths,Science): ").strip()
 
-    subjects = [subject for subject in subjects_input.split(",") if len(subjects_input)>0]
+    subjects = [subject.strip().lower() for subject in subjects_input.split(",") if len(subjects_input)>0]
     if not subjects:
         subjects = ["Not Assigned"]
 
@@ -184,7 +184,7 @@ def update_student(students):
 
     elif choice == "4":
         subjects_input = input("Enter new subjects (Comma Separated): ").strip()
-        student.subjects = [subject for subject in subjects_input.split(",") if len(subjects_input) > 0]
+        student.subjects = [subject.strip().lower() for subject in subjects_input.split(",") if len(subjects_input) > 0]
 
     elif choice == "5":
         print("❌ Update Cancelled.")
@@ -198,5 +198,27 @@ def update_student(students):
 
 
 
-def show_statistics():
-    pass
+def show_statistics(students):
+    print("\n📶 SHOW STATISTICS")
+    print("-"*40)
+
+    if not students:
+        print("⚠️ No student to analyze.")
+        return
+
+    print(f"Total Students: {len(students)}")
+
+    all_subjects = []
+
+    for student in students:
+        for subject in student.subjects:
+            all_subjects.append(subject)
+
+    unique_subjects = set(all_subjects)
+    print(f"Unique Subjects: {len(unique_subjects)}")
+    print(f"All Subjects: {', '.join(unique_subjects)}")
+
+    popular_subjects = max(all_subjects, key=all_subjects.count )
+    print(f"Most popular Subjects: {popular_subjects}")
+    print("-"*40)
+
